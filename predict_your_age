@@ -1,0 +1,26 @@
+/* https://www.codewars.com/kata/5aff237c578a14752d0035ae */
+
+
+#include <cmath>
+
+template<typename T>
+T aux_function(int rez ,T first)
+{
+    
+    return floor(sqrt(rez + first*first)/2); 
+}
+
+
+template<typename T, typename ...Args>
+T aux_function(int rez ,T first, Args ...args)
+{
+    
+    return aux_function(rez+ first*first, args...); 
+}
+
+template<typename T=int,typename ...Args>
+T predictAge(Args ...args)
+{
+    
+    return aux_function(0, args...); 
+}

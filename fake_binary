@@ -1,0 +1,8 @@
+#include <string>
+
+std::string fakeBin(std::string str){
+	/*it is not safe, if there are not digits the function will work,but not as expected */
+    transform(str.begin(), str.end(), str.begin(),[](char x){if (x < '5') return '0'; return '1';});
+return str;
+
+}
