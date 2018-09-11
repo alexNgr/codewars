@@ -1,0 +1,29 @@
+//https://www.codewars.com/kata/554ca54ffa7d91b236000023
+#include<unordered_map>
+#include<vector>
+
+std::vector<int> deleteNth(std::vector<int> arr, int n)
+{
+  std::unordered_map<int,int> n_apparitions;
+  std::vector<int> rez;
+
+  for(std::vector<int>::iterator it = arr.begin(); it != arr.end(); ++it)
+  {
+    
+    if(n_apparitions.find(*it) != n_apparitions.end() )
+    {
+      n_apparitions[*it] = n_apparitions[*it]+1;
+    }
+    else
+    {
+      n_apparitions.insert(std::pair<int,int>(*it, 0));
+    }
+    if(n_apparitions.at(*it) < n)
+    {
+      rez.emplace_back(*it);
+    }
+    
+  }
+
+  return rez;
+}
